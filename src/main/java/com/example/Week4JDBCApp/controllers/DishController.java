@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/restaurant")
 //localhost:8080/restaurant/home とかmenuにアクセスすることができる
@@ -46,15 +48,21 @@ public class DishController {
     //endpoint the save the dish
     @PostMapping("/save")
     public String saveDishes(@ModelAttribute Dish dish, Model model){
-        //validate the data
-        if(dish.getPrice() > 200){
-            model.addAttribute("message", "Price should be less than 200");
+
+        int statusCode = dishService.saveDish(dish);
+        if(statusCode == 0){
+            model.addAttribute("message", "Price should be less than 20");
             return "add-dish";
         }
+        //http://localhost:8080/restaurant/save
+        //Data is input anything in add-dish -> solve <problem -> ID:0 in save page> -> auto increment
+        List<Dish> dishes = dishService.getAllDishes();
+        Dish lastDishes = dishes.get(dishes.size() - 1);
+
         //save the data
         //open the menu page with updates data
-        model.addAttribute("dishes", dish);
-        model.addAttribute("message", dish.getName() + " added successfully");
+        model.addAttribute("dishes", lastDishes);
+        model.addAttribute("message", lastDishes.getName() + " added successfully");
         return "menu";
     }
 

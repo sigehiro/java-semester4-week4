@@ -25,14 +25,14 @@
                 <!--th:object: フォームを特定のオブジェクトにバインドします。
                 th:action: フォームが送信されるURLを指定します。-->
                 <form method="post" th:object="${dish}" th:action="@{/restaurant/save}" >
-                    <div>
-                        <!-- Input for dish ID, bound to 'id' field of 'dish' object -->
-                        <label class="form-label" for="menu-id">ID</label>
+<!--                    <div>-->
+<!--                        &lt;!&ndash; Input for dish ID, bound to 'id' field of 'dish' object &ndash;&gt;-->
+<!--                        <label class="form-label" for="menu-id">ID</label>-->
 
-                        <!-- th:field: フォーム入力フィールドをバインドされたオブジェクトの特定のプロパティにバインドします。-->
-                        <!--th:field: Binds form input fields to specific properties of the bound object.-->
-                        <input type="number" class="form-control mb-3" th:field="*{id}"  id="menu-id">
-                    </div>
+<!--                        &lt;!&ndash; th:field: フォーム入力フィールドをバインドされたオブジェクトの特定のプロパティにバインドします。&ndash;&gt;-->
+<!--                        &lt;!&ndash;th:field: Binds form input fields to specific properties of the bound object.&ndash;&gt;-->
+<!--                        <input type="number" class="form-control mb-3" th:field="*{id}"  id="menu-id">-->
+<!--                    </div>-->
                     <div>
                         <label class="form-label" for="menu-name">Name</label>
                         <input type="text" class="form-control mb-3" placeholder="name" th:field="*{name}" id="menu-name">
@@ -43,7 +43,7 @@
                     </div>
                     <div>
                         <label class="form-label" for="menu-price">Price</label>
-                        <input type="number" class="form-control mb-3" th:field="*{price}" id="menu-price">
+                        <input type="number" step="0.01" min="0.01" class="form-control mb-3" th:field="*{price}" id="menu-price">
                     </div>
 
                     <button type="submit" class="btn btn-success mt-3 w-100" >Add</button>
