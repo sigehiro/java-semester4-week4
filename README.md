@@ -6,7 +6,6 @@ DBの接続確認
 ![](home.png)
 ![](add-dish.png)
 ![](success.png)
+![](screen-reflected.png)
 ![](db-ad.png)
 ![](db-running.png)
-
-![](screen reflected.png)
